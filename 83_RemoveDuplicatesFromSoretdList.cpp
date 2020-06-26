@@ -23,7 +23,7 @@ public:
             }
             ListNode* tmp = start->next;
 
-            while(tmp->val == start->val) {
+            while(tmp != nullptr && tmp->val == start->val) {
                 tmp = tmp->next;
             }
             start->next = tmp;
