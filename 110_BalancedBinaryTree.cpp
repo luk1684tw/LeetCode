@@ -19,6 +19,10 @@ struct TreeNode {
 class Solution {
 public:
     bool isBalanced(TreeNode* root) {
+        if (root == nullptr) return true;
+
+        if (!isBalanced(root->left) || !isBalanced(root->right)) return false;
+
         if (abs(getHeight(root->left) - getHeight(root->right)) > 1)
             return false;
         else
