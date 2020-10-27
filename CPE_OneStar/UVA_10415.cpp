@@ -25,12 +25,13 @@ int main(void) {
 
     int nCases;
     cin >> nCases;
+    cin.get();
 
     for (int i = 0; i < nCases; i++) {
         int times[10] = {0};
         int prevPushed[10] = {0};
         string input;
-        cin >> input;
+        getline(cin, input);
         for (auto note: input) {
             int pushed[10] = {0};
             for (vector<int>::iterator finger = fingerMappings[note].begin(); finger != fingerMappings[note].end(); finger++) {
