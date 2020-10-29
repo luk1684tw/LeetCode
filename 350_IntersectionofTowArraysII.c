@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define bigger (a, b) ((a) > (b))
+#define bigger (int a, int b) ((a) > (b))
 
 void swap(int*s ,int i, int j)
 {
@@ -42,5 +42,6 @@ void qsort(int* nums, int start, int end)
 
 int* intersect(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize)
 {
-
+    qsort(nums1, 0, nums1Size - 1);
+    return 0;
 }
