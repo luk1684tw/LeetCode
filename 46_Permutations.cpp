@@ -1,40 +1,36 @@
-#include<vector>
+#include <vector>
+#include <stack>
 
 using namespace std;
 
 class Solution {
 public:
-    vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>> ans;
-        vector<int> cur;
-        findPermutations(cur, ans, nums, nums.size());
-        return ans;
-    }
+    vector<vector<int>> ans;
 
-    template <class T>
-    void printArr(T& nums) {
-        for (auto i: nums) {
-            cout << i << " ";
+    void swap(int& i, int& j) {
+        if (i != j) {
+            i ^= j;
+            j ^= i;
+            i ^= j;   
         }
-        cout << endl;
         return;
     }
 
-    void findPermutations(vector<int>& cur, vector<vector<int>>& ans, vector<int>& nums, int targetSize) {
-        
-        if (cur.size() == targetSize) {
-            ans.push_back(cur);
+    vector<vector<int>> permute(vector<int>& nums) {
+        findPermute(0, nums.size() - 1, nums);
+        return ans;
+    }
+
+    void findPermute(int l, int r, vector<int>& nums) {
+        if (l == r) {
+            ans.push_back(nums);
             return;
         }
-        for (int i = 0; i < nums.size(); i++) {
-            cur.push_back(nums[i]);
-            int tmp = nums[i];
-            nums.erase(nums.begin() + i);
-            cout << "candidates left: "
-            printArr(nums);
-            findPermutations(cur, ans, nums, targetSize);
-            nums.push_back(tmp);
-            cur.erase(cur.end() - 1);
+
+        for (int i = l; i <= r; i++) {
+            swap(nums[l], nums[i]);
+            findPermute(l + 1, r, nums);
+            swap(nums[l], nums[i]);
         }
         return;
     }
