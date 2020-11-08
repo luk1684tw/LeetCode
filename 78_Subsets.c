@@ -18,12 +18,17 @@ int** subsets(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
         }
         returnColumnSizes[i] = (int*) malloc(sizeof(int));
         returnColumnSizes[i][0] = size;
+        if (size == 0) {
+            free(ans[i]);
+            ans[i] = NULL;
+        }
     }
 
     for (int i = 0; i < *returnSize; i++) {
         for (int j = 0; j < returnColumnSizes[i][0]; j++) {
-            
+            printf("%d ", ans[i][j]);
         }
+        printf("\n");
     }
 
     return ans;
