@@ -11,5 +11,5 @@ void flatten(struct TreeNode* root){
         root = root->right;
     }
     root->right = tmp;
-    return 
+    return;
 }
