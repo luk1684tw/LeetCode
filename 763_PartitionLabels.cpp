@@ -25,7 +25,7 @@ public:
                 ans.push_back(++size);
                 size = 0;
                 if (i < S.size() - 1)
-                    maxIndex = hash[S[i+1]]
+                    maxIndex = hash[S[i+1]];
             }
         }
 
